@@ -59,7 +59,7 @@ namespace WebApplication1.Controllers
 
         //    Person person = await db.Persons
         //        .Include(s => s.Processes)
-        //        //.ThenInclude(e => e.Process)
+        //        //.ThenInclude(e => e.Systems)
         //        .AsNoTracking()
         //        .FirstOrDefaultAsync(p => p.Id == id);
 
@@ -71,18 +71,6 @@ namespace WebApplication1.Controllers
 
         //}
 
-        //[HttpGet]
-        //[ActionName("Details")]
-        //public async Task<IActionResult> Details(int? id)
-        //{
-        //    if (id != null)
-        //    {
-        //        Person person = await db.Persons.FirstOrDefaultAsync(p => p.Id == id);
-        //        if (person != null)
-        //            return View(person);
-        //    }
-        //    return NotFound();
-        //}
 
         public IActionResult Details(int id = 0)
         {
