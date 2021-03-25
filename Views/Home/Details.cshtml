@@ -1,0 +1,45 @@
+﻿@page
+@model WebApplication1.Models.Person
+    @{
+        ViewBag.Title = "Детали";
+    }
+    <div>
+        <dl class="dl-horizontal">
+            <dt>Имя</dt>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>Возраст</dt>
+            <dd>
+                @Html.DisplayFor(model => model.Age)
+            </dd>
+
+       
+            <dd>
+                <table class="table">
+                    <tr>
+                        <th>Process</th>
+                    </tr>
+
+                    @*if (Model.Process != 0)
+                    {
+                        @foreach (var item in Model.Processes)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.dataComposition)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.monetaryRightsSubjects)
+                                </td>
+
+                            </tr>
+                         }
+                    }*@
+
+                </table>
+            </dd>
+
+        </dl>
+    </div>

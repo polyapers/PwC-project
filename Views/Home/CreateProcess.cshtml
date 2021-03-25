@@ -1,0 +1,73 @@
+﻿@model WebApplication1.Models.Process
+
+@{
+    ViewData["Title"] = "CreateProcess";
+}
+
+<h1>CreateProcess</h1>
+
+<h4>Process</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateProcess">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="linkedPersons" class="control-label"> Системы </label>
+                <input asp-for="linkedPersons" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+
+
+            <script>var i = 0;
+
+                function increment() {
+                    i += 1;
+                }
+
+                function addfieldFunction() {
+                    var r = document.createElement('div');
+                    var y = document.createElement("INPUT");
+                    y.setAttribute("class", "dash-input");
+                    y.setAttribute("type", "text");
+                    increment();
+                    y.setAttribute("name", "a_level[ " + i + " ][0]"); //Keep attribute in lower case
+                    r.appendChild(y);
+                    document.getElementById("form-div").appendChild(r);
+                }</script>
+
+
+
+            <form class="dash-form" method="POST" action="/">
+                <div id="form-div" class="form-group">
+                    <label asp-for="linkedSystems" class="control-label">Третьи Лица</label>
+                    <input asp-for="linkedSystems" class="form-control" />
+                    <span asp-validation-for="Id" class="text-danger"></span>
+                </div>
+            </form>
+            <div class="dash-add">
+                <button class="dash-add-button" onclick="addfieldFunction()">ADD</button>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

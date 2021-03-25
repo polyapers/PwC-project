@@ -1,0 +1,33 @@
+﻿@model IEnumerable<WebApplication1.Models.Person>
+@using WebApplication1.Models
+@{
+    ViewBag.Title = "Все пользователи";
+}
+
+<a asp-action="Create">Добавить пользователя</a>
+
+<h1>Список пользователей</h1>
+<table class="table">
+    <tr>
+        <th>
+            <a asp-action="DBwatch" asp-route-sortOrder="@ViewData["NameSortParam"]">
+                Имя
+            </a>
+        </th>
+        <th>
+            <a asp-action="DBwatch" asp-route-sortOrder="@ViewData["AgeSortParam"]">
+                Возраст
+            </a>
+        </th>
+    </tr>
+    @foreach (Person u in Model)
+    {
+        <tr><td>@u.Name</td><td>@u.Age</td>
+                            <td>
+                                <a asp-action="Details"  asp-controller="Home" asp-route-id="@u.Id">Детали</a> |
+                                <a asp-action="Edit" asp-controller="Home" asp-route-id="@u.Id">Изменить</a> |
+                                <a asp-action="Delete" asp-controller="Home" asp-route-id="@u.Id">Удалить</a>
+                                
+                            </td></tr>
+    }
+</table>

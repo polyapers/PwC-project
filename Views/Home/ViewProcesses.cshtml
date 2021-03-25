@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebApplication1.Models.Process>
+@{
+    ViewBag.Title = "Все процессы";
+}
+<a asp-action="CreateProcess">Добавить</a>
+<table class="table">
+    <tr><td>ID</td><td>Системы</td><td>Третьи лица</td><td>Состав данных</td>
+    <td>Субъекты ПДн</td><td>Основание обработки</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.Id</td>
+        <td>@item.dataComposition</td>
+        <td>@item.monetaryRightsSubjects</td>
+        <td>@item.processBasis</td></tr>
+    }
+</table>
