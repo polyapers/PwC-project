@@ -36,13 +36,14 @@
                 function addfieldFunction() {
                     var r = document.createElement('div');
                     var y = document.createElement("INPUT");
-                    y.setAttribute("class", "dash-input");
+                    y.setAttribute("class", "form-control");
                     y.setAttribute("type", "text");
                     increment();
-                    y.setAttribute("name", "a_level[ " + i + " ][0]"); //Keep attribute in lower case
+                    y.setAttribute("name", "a_level[ " + i + " ][0]"); 
                     r.appendChild(y);
                     document.getElementById("form-div").appendChild(r);
-                }</script>
+                }
+            </script>
 
 
 
