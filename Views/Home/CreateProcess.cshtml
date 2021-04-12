@@ -1,8 +1,5 @@
-﻿@model WebApplication1.Models.Process
-
-@{
-    ViewData["Title"] = "CreateProcess";
-}
+@model WebApplication1.Models.Process
+@{ ViewData["Title"] = "CreateProcess"; }
 
 <h1>CreateProcess</h1>
 
@@ -10,7 +7,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="CreateProcess">
+        <form asp-action="CreateProcess" asp-controller="home">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Id" class="control-label"></label>
@@ -21,11 +18,37 @@
 
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="linkedPersons" class="control-label"> Системы </label>
-                <input asp-for="linkedPersons" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
+                <label asp-for="linkedSystems" class="control-label"> Системы </label>
+                <input asp-for="linkedSystems" class="form-control" />
+                <span asp-validation-for="linkedSystems" class="text-danger"></span>
             </div>
 
+            <datalist id="dataPersons">
+                 if (Model.Person!= 0)
+                    {
+                        @foreach (var item in Person.ToList())
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Name)
+                                </td>
+                            </tr>
+                         }
+                    }
+                @foreach (Person item in personNames)
+                {
+                <option>@item.Name</option>
+                }
+
+                <option>Alla</option>
+                <option>Andrey</option>
+                <option>Dmitry</option>
+                <option>Katya</option>
+                <option>Kirill</option>
+                <option>Marina</option>
+                <option>Maximilian</option>
+                <option>Svetlana</option>
+            </datalist>
 
             <script>var i = 0;
 
@@ -35,27 +58,29 @@
 
                 function addfieldFunction() {
                     var r = document.createElement('div');
-                    var y = document.createElement("INPUT");
+                    var y = document.createElement("input");
+                    y.setAttribute("asp-for", "linkedPersons");
                     y.setAttribute("class", "form-control");
-                    y.setAttribute("type", "text");
+                    y.setAttribute("type", "search");
+                    y.setAttribute("list", "dataPersons");
+                    y.setAttribute("placeholder", "Введите имя");
                     increment();
-                    y.setAttribute("name", "a_level[ " + i + " ][0]"); 
+                    y.setAttribute("name", "a_level[ " + i + " ][0]"); //Keep attribute in lower case
                     r.appendChild(y);
                     document.getElementById("form-div").appendChild(r);
-                }
-            </script>
+                }</script>
 
 
-
-            <form class="dash-form" method="POST" action="/">
-                <div id="form-div" class="form-group">
-                    <label asp-for="linkedSystems" class="control-label">Третьи Лица</label>
-                    <input asp-for="linkedSystems" class="form-control" />
-                    <span asp-validation-for="Id" class="text-danger"></span>
-                </div>
-            </form>
+            
+            <div asp-validation-summary="ModelOnly" class="text-danger" method="POST" action="/"></div>
+            <div id="form-div" class="form-group">
+                <label asp-for="linkedPersons" class="control-label">Третьи Лица</label>
+                <input asp-for="linkedPersons" class="form-control" type="search" list="dataPersons" placeholder="Введите имя" />
+                <span asp-validation-for="linkedPersons" class="text-danger"></span>
+            </div>
+           
             <div class="dash-add">
-                <button class="dash-add-button" onclick="addfieldFunction()">ADD</button>
+                <input type="button" value="ADD" class="dash-add-button" onclick="addfieldFunction()" />
             </div>
 
 
